@@ -8,11 +8,13 @@ namespace GardenRental
 {
     class TakeInTextFileAndSeperate
     {
+        public int counter = 0;
         List<int> XPointFromFile = new List<int>();
         List<int> YPointFromFile = new List<int>();
         List<int> WidthOfPlotFromFile = new List<int>();
         List<int> HeightOfPlotFromFile = new List<int>();
-
+        FindFencing getFenceInfo = new FindFencing();
+        LayoutOfGarden layout = new LayoutOfGarden();
         public void ReadTxtFile()
         {
             SeperateTxtFilesByLines();
@@ -21,7 +23,7 @@ namespace GardenRental
         public void SeperateTxtFilesByLines()
         {
             int internalCounter = 0;
-            int counter = 0;
+            counter = 0;
             string EachPlotSizeAndOriginPoint;
             System.IO.StreamReader ReadPlotFile =
             new System.IO.StreamReader("C:\\Users\\Jared Merten\\Documents\\GardenRental\\GardenPlotInput.txt");
@@ -33,6 +35,8 @@ namespace GardenRental
                 counter++;
             }
             ReadPlotFile.Close();
+            getFenceInfo.FindAmountOfTotalFencingWithOverlapping(WidthOfPlotFromFile, HeightOfPlotFromFile);
+            layout.CreateAllPoints(XPointFromFile, YPointFromFile, WidthOfPlotFromFile, HeightOfPlotFromFile);
         }
             public void SeperateStringIntoSubstrings(int internalCounter,string EachPlotSizeAndOriginPoint)
         {

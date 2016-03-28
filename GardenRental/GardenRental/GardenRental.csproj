@@ -43,6 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheckOverLappingGardens.cs" />
+    <Compile Include="FindFencing.cs" />
+    <Compile Include="LayoutOfGarden.cs" />
+    <Compile Include="PointsInGarden.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TakeInTextFileAndSeperate.cs" />
