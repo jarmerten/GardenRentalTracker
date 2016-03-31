@@ -8,13 +8,11 @@ namespace GardenRental
 {
     class LayoutOfGarden
     {
-        List<int> WhosNumberedPlot = new List<int>();
-        List<int> EverySquareFootOfGardenPoint = new List<int>();
-        public void CreateAllPoints(List<int> XPointFromFile, List<int> YPointFromFile, List<int> WidthOfPlotFromFile, List<int> HeightOfPlotFromFile)
+        public int counter = 0;
+        public void CreateAllPoints(List<int> XPointFromFile, List<int> YPointFromFile, List<int> WidthOfPlotFromFile, List<int> HeightOfPlotFromFile, List<int> WhosNumberedPlot, List<int> EverySquareFootOfGardenPoint)
         {
             int innerinnercounter = 0;
             int innercounter = 0;
-            int counter = 0;
             int point = 0;
             int widthcounter = 0;
             int heightcounter = 0;
@@ -40,7 +38,7 @@ namespace GardenRental
                 }
                     innercounter = 0;
                     counter++;
-            }
+    }
         }
     }
 }

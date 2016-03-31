@@ -9,34 +9,25 @@ namespace GardenRental
     class TakeInTextFileAndSeperate
     {
         public int counter = 0;
-        List<int> XPointFromFile = new List<int>();
-        List<int> YPointFromFile = new List<int>();
-        List<int> WidthOfPlotFromFile = new List<int>();
-        List<int> HeightOfPlotFromFile = new List<int>();
-        FindFencing getFenceInfo = new FindFencing();
-        LayoutOfGarden layout = new LayoutOfGarden();
-        public void ReadTxtFile()
-        {
-            SeperateTxtFilesByLines();
-            Console.ReadLine();
-        }
-        public void SeperateTxtFilesByLines()
+        public List<int> XPointFromFile = new List<int>();
+        public List<int> YPointFromFile = new List<int>();
+        public List<int> WidthOfPlotFromFile = new List<int>();
+        public List<int> HeightOfPlotFromFile = new List<int>();
+        public void SeperateTxtFilesByLines(string filelocation)
         {
             int internalCounter = 0;
             counter = 0;
             string EachPlotSizeAndOriginPoint;
             System.IO.StreamReader ReadPlotFile =
-            new System.IO.StreamReader("C:\\Users\\Jared Merten\\Documents\\GardenRental\\GardenPlotInput.txt");
+            new System.IO.StreamReader("C:\\Users\\Jared Merten\\Documents\\Visual Studio 2015\\Projects\\GardenRentalTracker\\GardenRental\\GardenRental\\obj\\Debug\\"+ filelocation);
             while ((EachPlotSizeAndOriginPoint = ReadPlotFile.ReadLine()) != null)
             {
                 Console.WriteLine(EachPlotSizeAndOriginPoint);
                 SeperateStringIntoSubstrings(internalCounter, EachPlotSizeAndOriginPoint);
                 internalCounter = 0;
                 counter++;
-            }
+            }           
             ReadPlotFile.Close();
-            getFenceInfo.FindAmountOfTotalFencingWithOverlapping(WidthOfPlotFromFile, HeightOfPlotFromFile);
-            layout.CreateAllPoints(XPointFromFile, YPointFromFile, WidthOfPlotFromFile, HeightOfPlotFromFile);
         }
             public void SeperateStringIntoSubstrings(int internalCounter,string EachPlotSizeAndOriginPoint)
         {
@@ -47,7 +38,6 @@ namespace GardenRental
                 string SeperateStringsByCommas = example.IndexOf(',') == 0 ? myString : example.Split(',')[internalCounter];
                 int TurnStringNumberIntoInt = Int32.Parse(SeperateStringsByCommas);
                 AddPointsToList(internalCounter, TurnStringNumberIntoInt);
-                Console.WriteLine(SeperateStringsByCommas);
                 internalCounter++;
             }
         }
